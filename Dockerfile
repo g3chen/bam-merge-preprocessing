@@ -13,6 +13,8 @@ RUN ./build-local-code /modulator/code/gsi/recipe.yaml --initsh /usr/share/modul
 	find /modules -type d -exec chmod 777 {} \; && \
 	find /modules -type f -exec chmod 777 {} \;
 
+RUN ls /modules/gsi/modulator/modulefiles/Ubuntu18.04
+
 # add the user
 RUN groupadd -r -g 1000 ubuntu && useradd -r -g ubuntu -u 1000 ubuntu
 USER ubuntu

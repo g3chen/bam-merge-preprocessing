@@ -1,0 +1,1014 @@
+{
+  "defaults": {
+    "description": "bamMergePreprocessing workflow test",
+    "metrics_calculate": "calculate.sh",
+    "metrics_compare": "compare.sh",
+    "output_metrics_dir": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/output_metrics",
+    "parameters": {
+      "wdl_options": {
+        "write_to_cache": false,
+        "read_from_cache": false
+      }
+    }
+  },
+  "tests": [
+    {
+      "id": "Test1",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "chr1",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "PCSI0022.chr2",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test2",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.preprocessBam.minMapQuality": 60,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "chr1",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "chr2",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test3",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "chr1",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "chr2",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "MultipleOutputGroups",
+      "description": "multiple output groups",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doMarkDuplicates": true,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022_P",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            },
+            {
+              "outputIdentifier": "PCSI0022_R",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "PCSI0022_P.chr1",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "PCSI0022_R.chr1",
+              "memory": 22,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_P"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            },
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_R"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test4",
+      "description": "bqsr + multiple output groups",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022_P",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            },
+            {
+              "outputIdentifier": "PCSI0022_R",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_P"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            },
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_R"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test5",
+      "description": "bqsr + chr_size grouping test + multiple output groups",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022_P",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            },
+            {
+              "outputIdentifier": "PCSI0022_R",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "chr17+chr18",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_P"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            },
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_R"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test6",
+      "description": "no bqsr + multiple output groups",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022_P",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            },
+            {
+              "outputIdentifier": "PCSI0022_R",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_P"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            },
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_R"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test7",
+      "description": "no bqsr + chr_size grouping test + multiple output groups",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022_P",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            },
+            {
+              "outputIdentifier": "PCSI0022_R",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "chr21+chr22+chrY+chrM",
+              "memory": 21,
+              "timeout": 1
+            },
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_P"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            },
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022_R"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test8",
+      "description": "bqsr + chr_size grouping test + merge all inputs",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test9",
+      "description": "no bqsr + chr_size grouping test + merge all inputs",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.doMarkDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.preprocessBam.filterFlags": 256,
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "PCSI0022",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "PCSI0022"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test10",
+      "description": "split trim test on full star bams",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doFilter": false,
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.doMarkDuplicates": true,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.doSplitNCigarReads": true,
+          "bamMergePreprocessing.preprocessBam.splitNCigarReadsAdditionalParams": "--process-secondary-alignments true",
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "star_bam_full",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/TGL01_X022_Ov_M_PE_302_WT.Aligned.sortedByCoord.out.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/TGL01_X022_Ov_M_PE_302_WT.Aligned.sortedByCoord.out.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "star_bam_full"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    },
+    {
+      "id": "Test11",
+      "description": "split trim test on star bams",
+      "parameters": {
+        "wdl_inputs": {
+          "bamMergePreprocessing.preprocessBam.temporaryWorkingDir": "$TMP",
+          "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13+chr14,chr15+chr16,chr17+chr18,chr19+chr20,chr21+chr22+chrY+chrM,chrX",
+          "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+          "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.indelRealign.knownAlleles": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
+            "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+          ],
+          "bamMergePreprocessing.doFilter": false,
+          "bamMergePreprocessing.doBqsr": false,
+          "bamMergePreprocessing.doMarkDuplicates": true,
+          "bamMergePreprocessing.preprocessBam.removeDuplicates": false,
+          "bamMergePreprocessing.doSplitNCigarReads": true,
+          "bamMergePreprocessing.preprocessBam.splitNCigarReadsAdditionalParams": "--process-secondary-alignments true",
+          "bamMergePreprocessing.inputGroups": [
+            {
+              "outputIdentifier": "star_test",
+              "bamAndBamIndexInputs": [
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/star_test1.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/star_test1.bam.bai"
+                },
+                {
+                  "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/star_test2.bam",
+                  "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/star_test2.bam.bai"
+                }
+              ]
+            }
+          ],
+          "bamMergePreprocessing.analyzeCovariates.timeout": 1,
+          "bamMergePreprocessing.applyBaseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.baseQualityScoreRecalibration.timeout": 1,
+          "bamMergePreprocessing.gatherBQSRReports.timeout": 1,
+          "bamMergePreprocessing.indelRealign.timeout": 1,
+          "bamMergePreprocessing.mergeSplitByIntervalBams.timeout": 1,
+          "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+            {
+              "id": "*",
+              "memory": 18,
+              "timeout": 1
+            }
+          ],
+          "bamMergePreprocessing.realignerTargetCreator.timeout": 1
+        },
+        "wdl_outputs": {
+          "bamMergePreprocessing.outputGroups": [
+            {
+              "key": {
+                "outputIdentifier": "star_test"
+              },
+              "annotations": {
+                "key1": "val1",
+                "key2": "val2"
+              }
+            }
+          ],
+          "bamMergePreprocessing.recalibrationReport": {},
+          "bamMergePreprocessing.recalibrationTable": {}
+        }
+      }
+    }
+  ]
+}
