@@ -24,7 +24,7 @@
         },
         {
           "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bam",
-          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bam.bai"
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bai"
         },
         {
           "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022X.val.bam",
