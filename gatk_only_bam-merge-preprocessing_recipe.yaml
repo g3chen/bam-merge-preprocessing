@@ -1,0 +1,27 @@
+# java/8
+- name: java
+  version: 8
+  build_type: extract
+  build_args:
+    prereq_args:
+      sha256: 4ee3b37cb70fe1dbfad0ef449fe2c5fec43d81bd37ef0a65ec9f65afac190b4f
+      url: https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_x64_linux_8u222b10.tar.gz
+    prereq_type: download
+  system_depends:
+    - name: libfontconfig1-dev
+
+# gatk/3.6-0
+- name: gatk
+  version: 3.6-0
+  build_type: copy
+  build_args:
+    prereq_args:
+      prereq_args:
+        sha256: 5e7b96717509c61f8048443f1257ccfbc130fb43f30140b288a4210c0e257453
+        url: https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.6-0-g89b7209
+      prereq_type: download
+    prereq_type: extract
+    from: GenomeAnalysisTK.jar
+  depends:
+    - name: java
+      version: 8
