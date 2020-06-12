@@ -1,34 +1,34 @@
 {
   "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
-  "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+  "bamMergePreprocessing.reference": "/home/ubuntu/Downloads/sample_data/hg19_random.fa",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
-    "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.indelRealign.knownAlleles": [
-    "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
-    "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.inputGroups": [
     {
       "outputIdentifier": "PCSI0022",
       "bamAndBamIndexInputs": [
         {
-          "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam",
-          "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022C.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022C.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022C.val.bam.bai"
         },
         {
-          "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam",
-          "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022P.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022P.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022P.val.bam.bai"
         },
         {
-          "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bam",
-          "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022R.val.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bam.bai"
         },
         {
-          "bam": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam",
-          "bamIndex": "/.mounts/labs/gsi/testdata/bamMergePreprocessing/input_data/PCSI0022X.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022X.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022X.val.bam.bai"
         }
       ]
     }
