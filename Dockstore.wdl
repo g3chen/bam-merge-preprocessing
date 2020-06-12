@@ -10,7 +10,7 @@ workflow bamMergePreprocessing {
     Boolean doSplitNCigarReads = false
     Boolean doIndelRealignment = true
     Boolean doBqsr = true
-    String reference
+    File reference
 
     # preprocessingBam runtime attributes overrides
     # map access with missing key (e.g. an interval that does not need an override) is not supported
@@ -286,7 +286,7 @@ task preprocessBam {
 
     # split N cigar reads
     String splitNCigarReadsSuffix = ".split"
-    String reference
+    File reference
     Boolean refactorCigarString = false
     Array[String] readFilters = []
     String? splitNCigarReadsAdditionalParams
@@ -551,8 +551,8 @@ task realignerTargetCreator {
   input {
     Array[File] bams
     Array[File] bamIndexes
-    String reference
-    Array[String] knownIndels
+    File reference
+    Array[File] knownIndels
     Array[String] intervals
     String? downsamplingType
     String? additionalParams
@@ -613,8 +613,8 @@ task indelRealign {
     Array[File] bams
     Array[File] bamIndexes
     Array[String] intervals
-    String reference
-    Array[String] knownAlleles
+    File reference
+    Array[File] knownAlleles
     File targetIntervals
     String? additionalParams
 
@@ -693,9 +693,9 @@ task indelRealign {
 task baseQualityScoreRecalibration {
   input {
     Array[File] bams
-    String reference
+    File reference
     Array[String] intervals = []
-    Array[String] knownSites
+    Array[File] knownSites
     String? additionalParams
     String outputFileName = "gatk.recalibration.csv"
 
