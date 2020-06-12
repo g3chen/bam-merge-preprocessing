@@ -6,7 +6,8 @@ MAINTAINER Fenglin Chen <f73chen@uwaterloo.ca>
 USER root
 
 # move in the yaml to build modulefiles from
-COPY bam-merge-preprocessing_recipe.yaml /modulator/code/gsi/recipe.yaml
+#COPY bam-merge-preprocessing_recipe.yaml /modulator/code/gsi/recipe.yaml
+COPY gatk_only_bam-merge-preprocessing_recipe.yaml /modulator/code/gsi/recipe.yaml
 
 # build the modules and set folder / file permissions
 RUN ./build-local-code /modulator/code/gsi/recipe.yaml --initsh /usr/share/modules/init/sh --output /modules && \
