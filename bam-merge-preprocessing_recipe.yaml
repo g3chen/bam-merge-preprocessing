@@ -50,16 +50,27 @@
   version: 3.6-0
   build_type: copy
   build_args:
-    prereq_args:
-      prereq_args:
-        sha256: 5e7b96717509c61f8048443f1257ccfbc130fb43f30140b288a4210c0e257453
-        url: https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.6-0-g89b7209
-      prereq_type: download
-    prereq_type: extract
-    from: GenomeAnalysisTK.jar
+    from: /modulator/GenomeAnalysisTK.jar
+    to: bin/gatk
   depends:
     - name: java
       version: 8
+
+# gatk/3.6-0 - Original version. Download link no longer functional
+#- name: gatk
+#  version: 3.6-0
+#  build_type: copy
+#  build_args:
+#    prereq_args:
+#      prereq_args:
+#        sha256: 5e7b96717509c61f8048443f1257ccfbc130fb43f30140b288a4210c0e257453
+#        url: https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.6-0-g89b7209
+#      prereq_type: download
+#    prereq_type: extract
+#    from: GenomeAnalysisTK.jar
+#  depends:
+#    - name: java
+#      version: 8
 
 # rstats/3.6
 - name: rstats

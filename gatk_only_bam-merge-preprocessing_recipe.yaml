@@ -15,8 +15,8 @@
   version: 3.6-0
   build_type: copy
   build_args:
-    from: /u/g3chen/bam-merge-preprocessing/GenomeAnalysisTK.jar
-    to: bin/GenomeAnalysisTK.jar
+    from: /modulator/GenomeAnalysisTK.jar
+    to: bin/gatk
   depends:
     - name: java
       version: 8
