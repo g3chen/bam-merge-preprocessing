@@ -8,9 +8,9 @@ task find_tools {
 		whereis htsfile
 		whereis gatk
 		whereis java
-		whereis rstats
+		whereis R
 		whereis python
-
+                echo "@@@@@@@@@@@@@@@@"
 		echo $MANPATH
 		echo "@@@@@@@@@@@@@@@@"
 		echo $PKG_CONFIG_PATH
@@ -29,7 +29,7 @@ task find_tools {
 		String message = read_string(stdout())
 	}
 	runtime {
-		docker: "g3chen/bam-merge-preprocessing:3"
-#		docker: "g3chen/bam-merge-preprocessing:4"
+#		docker: "g3chen/bam-merge-preprocessing:3"
+		docker: "g3chen/bam-merge-preprocessing:4"
 	}
 }
