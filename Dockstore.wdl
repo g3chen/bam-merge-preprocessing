@@ -11,6 +11,7 @@ workflow bamMergePreprocessing {
     Boolean doIndelRealignment = true
     Boolean doBqsr = true
     File reference
+    String docker = "g3chen/bam-merge-preprocessing:4"
 
     # preprocessingBam runtime attributes overrides
     # map access with missing key (e.g. an interval that does not need an override) is not supported
@@ -62,7 +63,8 @@ workflow bamMergePreprocessing {
 
   call splitStringToArray {
     input:
-      str = intervalsToParallelizeByString
+      str = intervalsToParallelizeByString,
+      docker = docker
   }
   Array[Intervals] intervalsToParallelizeBy = splitStringToArray.intervalsList.intervalsList
 
@@ -111,7 +113,8 @@ workflow bamMergePreprocessing {
           doFilter = doFilter,
           doMarkDuplicates = doMarkDuplicates,
           doSplitNCigarReads = doSplitNCigarReads,
-          runtimeAttributes = runtimeAttributesOverride
+          runtimeAttributes = runtimeAttributesOverride,
+          docker = docker
       }
     }
     Array[File] preprocessedBams = preprocessBam.preprocessedBam
@@ -124,7 +127,8 @@ workflow bamMergePreprocessing {
           bams = preprocessedBams,
           bamIndexes = preprocessedBamIndexes,
           intervals = intervals.intervalsList,
-          reference = reference
+          reference = reference,
+          docker = docker
       }
 
       call indelRealign {
@@ -133,7 +137,8 @@ workflow bamMergePreprocessing {
           bamIndexes = preprocessedBamIndexes,
           intervals = intervals.intervalsList,
           targetIntervals = realignerTargetCreator.targetIntervals,
-          reference = reference
+          reference = reference,
+          docker = docker
       }
       Array[File] indelRealignedBams = indelRealign.indelRealignedBams
       Array[File] indelRealignedBamIndexes = indelRealign.indelRealignedBamIndexes
@@ -143,7 +148,8 @@ workflow bamMergePreprocessing {
       call baseQualityScoreRecalibration {
         input:
           bams = select_first([indelRealignedBams, preprocessedBams]),
-          reference = reference
+          reference = reference,
+          docker = docker
       }
     }
     Array[File] processedBamsByInterval = select_first([indelRealignedBams, preprocessedBams])
@@ -156,19 +162,22 @@ workflow bamMergePreprocessing {
   if(doBqsr) {
     call gatherBQSRReports {
       input:
-        recalibrationTables = select_all(recalibrationTableByInterval)
+        recalibrationTables = select_all(recalibrationTableByInterval),
+        docker = docker
     }
 
     call analyzeCovariates {
       input:
-        recalibrationTable = gatherBQSRReports.recalibrationTable
+        recalibrationTable = gatherBQSRReports.recalibrationTable,
+        docker = docker
     }
 
     scatter(bam in processedBams) {
       call applyBaseQualityScoreRecalibration {
         input:
           recalibrationTable = gatherBQSRReports.recalibrationTable,
-          bam = bam
+          bam = bam,
+          docker = docker
       }
     }
     Array[File] recalibratedBams = applyBaseQualityScoreRecalibration.recalibratedBam
@@ -179,7 +188,8 @@ workflow bamMergePreprocessing {
     input:
       inputGroups = inputGroups,
       bams = select_first([recalibratedBams, processedBams]),
-      bamIndexes = select_first([recalibratedBamIndexes, processedBamIndexes])
+      bamIndexes = select_first([recalibratedBamIndexes, processedBamIndexes]),
+      docker = docker
   }
 
   scatter(o in collectFilesBySample.filesByOutputIdentifier.collectionGroups) {
@@ -188,7 +198,8 @@ workflow bamMergePreprocessing {
         input:
           bams = o.bams,
           outputFileName = o.outputFileName,
-          suffix = "" # collectFilesBySample task generates the file name
+          suffix = "", # collectFilesBySample task generates the file name
+          docker = docker
       }
     }
     OutputGroup outputGroup = { "outputIdentifier": o.outputIdentifier,
@@ -213,6 +224,7 @@ task splitStringToArray {
     Int cores = 1
     Int timeout = 1
     String modules = "python/3.7"
+    String docker
   }
 
   command <<<
@@ -238,8 +250,9 @@ task splitStringToArray {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -310,6 +323,7 @@ task preprocessBam {
   Int cores = select_first([optionalRuntimeAttributes.cores, defaultRuntimeAttributes.cores])
   Int timeout = select_first([optionalRuntimeAttributes.timeout, defaultRuntimeAttributes.timeout])
   String modules = select_first([optionalRuntimeAttributes.modules, defaultRuntimeAttributes.modules])
+  String docker
 
   String workingDir = if temporaryWorkingDir == "" then "" else "~{temporaryWorkingDir}/"
 
@@ -462,8 +476,9 @@ task preprocessBam {
   }
 
   runtime {
-    memory: "~{memory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{memory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -507,6 +522,7 @@ task mergeBams {
     Int cores = 1
     Int timeout = 6
     String modules = "gatk/4.1.6.0"
+    String docker
   }
 
   command <<<
@@ -529,8 +545,9 @@ task mergeBams {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -565,6 +582,7 @@ task realignerTargetCreator {
     # use gatk3 for now: https://github.com/broadinstitute/gatk/issues/3104
     String modules = "gatk/3.6-0"
     String gatkJar = "$GATK_ROOT/GenomeAnalysisTK.jar"
+    String docker
   }
 
   command <<<
@@ -585,8 +603,9 @@ task realignerTargetCreator {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -626,6 +645,7 @@ task indelRealign {
     # use gatk3 for now: https://github.com/broadinstitute/gatk/issues/3104
     String modules = "python/3.7 gatk/3.6-0"
     String gatkJar = "$GATK_ROOT/GenomeAnalysisTK.jar"
+    String docker
   }
 
   command <<<
@@ -667,8 +687,9 @@ task indelRealign {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -704,6 +725,7 @@ task baseQualityScoreRecalibration {
     Int cores = 1
     Int timeout = 6
     String modules = "gatk/4.1.6.0"
+    String docker
   }
 
   # workaround for this issue https://github.com/broadinstitute/cromwell/issues/5092
@@ -727,8 +749,9 @@ task baseQualityScoreRecalibration {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -759,6 +782,7 @@ task gatherBQSRReports {
     Int cores = 1
     Int timeout = 6
     String modules = "gatk/4.1.6.0"
+    String docker
   }
 
   command <<<
@@ -775,8 +799,9 @@ task gatherBQSRReports {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -804,6 +829,7 @@ task analyzeCovariates {
     Int cores = 1
     Int timeout = 6
     String modules = "gatk/4.1.6.0"
+    String docker
   }
 
   command <<<
@@ -820,8 +846,9 @@ task analyzeCovariates {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -851,6 +878,7 @@ task applyBaseQualityScoreRecalibration {
     Int cores = 1
     Int timeout = 6
     String modules = "gatk/4.1.6.0"
+    String docker
   }
 
   command <<<
@@ -869,8 +897,9 @@ task applyBaseQualityScoreRecalibration {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
@@ -899,6 +928,7 @@ task collectFilesBySample {
     Int cores = 1
     Int timeout = 1
     String modules = "python/3.7"
+    String docker
   }
 
   InputGroups wrappedInputGroups = {"inputGroups": inputGroups}
@@ -949,8 +979,9 @@ task collectFilesBySample {
   }
 
   runtime {
-    memory: "~{jobMemory} GB"
-    cpu: "~{cores}"
+  	docker:  "~{docker}"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{cores}"
     timeout: "~{timeout}"
     modules: "~{modules}"
   }
