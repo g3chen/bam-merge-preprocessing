@@ -19,6 +19,7 @@ workflow bamMergePreprocessing {
     File? bwt
     File? pac
     File? sa
+    File? dict
 
     String docker = "g3chen/bam-merge-preprocessing:4"
 
@@ -125,6 +126,7 @@ workflow bamMergePreprocessing {
           bwt = bwt,
           pac = pac,
           sa = sa,
+          dict = dict,
           doFilter = doFilter,
           doMarkDuplicates = doMarkDuplicates,
           doSplitNCigarReads = doSplitNCigarReads,
@@ -149,6 +151,7 @@ workflow bamMergePreprocessing {
           bwt = bwt,
           pac = pac,
           sa = sa,
+          dict = dict,
           docker = docker
       }
 
@@ -165,6 +168,7 @@ workflow bamMergePreprocessing {
           bwt = bwt,
           pac = pac,
           sa = sa,
+          dict = dict,
           docker = docker
       }
       Array[File] indelRealignedBams = indelRealign.indelRealignedBams
@@ -182,6 +186,7 @@ workflow bamMergePreprocessing {
           bwt = bwt,
           pac = pac,
           sa = sa,
+          dict = dict,
           docker = docker
       }
     }
@@ -340,6 +345,7 @@ task preprocessBam {
     File? bwt
     File? pac
     File? sa
+    File? dict
 
     Boolean refactorCigarString = false
     Array[String] readFilters = []
@@ -617,6 +623,7 @@ task realignerTargetCreator {
     File? bwt
     File? pac
     File? sa
+    File? dict
 
     Array[File] knownIndels
     Array[String] intervals
@@ -692,6 +699,7 @@ task indelRealign {
     File? bwt
     File? pac
     File? sa
+    File? dict
 
     Array[File] knownAlleles
     File targetIntervals
@@ -782,6 +790,7 @@ task baseQualityScoreRecalibration {
     File? bwt
     File? pac
     File? sa
+    File? dict
 
     Array[String] intervals = []
     Array[File] knownSites

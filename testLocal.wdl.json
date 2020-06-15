@@ -7,6 +7,7 @@
   "bamMergePreprocessing.bwt": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.bwt",
   "bamMergePreprocessing.pac": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.pac",
   "bamMergePreprocessing.sa": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.sa",
+  "bamMergePreprocessing.dict": "/home/ubuntu/Downloads/sample_data/hg19_random.dict",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
     "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
