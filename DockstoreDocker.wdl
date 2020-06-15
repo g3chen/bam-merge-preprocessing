@@ -250,7 +250,7 @@ task splitStringToArray {
   }
 
   runtime {
-  	docker:  "~{docker}"
+    docker:  "~{docker}"
     memory:  "~{jobMemory} GB"
     cpu:     "~{cores}"
     timeout: "~{timeout}"
@@ -476,7 +476,7 @@ task preprocessBam {
   }
 
   runtime {
-  	docker:  "~{docker}"
+    docker:  "~{docker}"
     memory:  "~{memory} GB"
     cpu:     "~{cores}"
     timeout: "~{timeout}"
@@ -545,7 +545,7 @@ task mergeBams {
   }
 
   runtime {
-  	docker:  "~{docker}"
+    docker:  "~{docker}"
     memory:  "~{jobMemory} GB"
     cpu:     "~{cores}"
     timeout: "~{timeout}"
