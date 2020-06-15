@@ -564,7 +564,7 @@ task realignerTargetCreator {
 
     # use gatk3 for now: https://github.com/broadinstitute/gatk/issues/3104
     String modules = "gatk/3.6-0"
-    String gatkJar = "$GATK_ROOT/GenomeAnalysisTK.jar"
+    String gatkJar = "GenomeAnalysisTK.jar"
   }
 
   command <<<
