@@ -119,6 +119,12 @@ workflow bamMergePreprocessing {
           intervals = intervals.intervalsList,
           outputFileName = i.outputIdentifier,
           reference = reference,
+          fai = fai,
+          amb = amb,
+          ann = ann,
+          bwt = bwt,
+          pac = pac,
+          sa = sa,
           doFilter = doFilter,
           doMarkDuplicates = doMarkDuplicates,
           doSplitNCigarReads = doSplitNCigarReads,
@@ -137,6 +143,12 @@ workflow bamMergePreprocessing {
           bamIndexes = preprocessedBamIndexes,
           intervals = intervals.intervalsList,
           reference = reference,
+          fai = fai,
+          amb = amb,
+          ann = ann,
+          bwt = bwt,
+          pac = pac,
+          sa = sa,
           docker = docker
       }
 
@@ -147,6 +159,12 @@ workflow bamMergePreprocessing {
           intervals = intervals.intervalsList,
           targetIntervals = realignerTargetCreator.targetIntervals,
           reference = reference,
+          fai = fai,
+          amb = amb,
+          ann = ann,
+          bwt = bwt,
+          pac = pac,
+          sa = sa,
           docker = docker
       }
       Array[File] indelRealignedBams = indelRealign.indelRealignedBams
@@ -158,6 +176,12 @@ workflow bamMergePreprocessing {
         input:
           bams = select_first([indelRealignedBams, preprocessedBams]),
           reference = reference,
+          fai = fai,
+          amb = amb,
+          ann = ann,
+          bwt = bwt,
+          pac = pac,
+          sa = sa,
           docker = docker
       }
     }
@@ -309,6 +333,14 @@ task preprocessBam {
     # split N cigar reads
     String splitNCigarReadsSuffix = ".split"
     File reference
+    # Pass in index files for Cromwell so they're in the same directory as the bwaRef file
+    File? fai
+    File? amb
+    File? ann
+    File? bwt
+    File? pac
+    File? sa
+
     Boolean refactorCigarString = false
     Array[String] readFilters = []
     String? splitNCigarReadsAdditionalParams
@@ -578,6 +610,14 @@ task realignerTargetCreator {
     Array[File] bams
     Array[File] bamIndexes
     File reference
+    # Pass in index files for Cromwell so they're in the same directory as the bwaRef file
+    File? fai
+    File? amb
+    File? ann
+    File? bwt
+    File? pac
+    File? sa
+
     Array[File] knownIndels
     Array[String] intervals
     String? downsamplingType
@@ -645,6 +685,14 @@ task indelRealign {
     Array[File] bamIndexes
     Array[String] intervals
     File reference
+    # Pass in index files for Cromwell so they're in the same directory as the bwaRef file
+    File? fai
+    File? amb
+    File? ann
+    File? bwt
+    File? pac
+    File? sa
+
     Array[File] knownAlleles
     File targetIntervals
     String? additionalParams
@@ -727,6 +775,14 @@ task baseQualityScoreRecalibration {
   input {
     Array[File] bams
     File reference
+    # Pass in index files for Cromwell so they're in the same directory as the bwaRef file
+    File? fai
+    File? amb
+    File? ann
+    File? bwt
+    File? pac
+    File? sa
+
     Array[String] intervals = []
     Array[File] knownSites
     String? additionalParams
