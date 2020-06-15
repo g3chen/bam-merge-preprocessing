@@ -586,6 +586,9 @@ task realignerTargetCreator {
   }
 
   command <<<
+    source ~/.bashrc
+    module load gatk/3.6-0
+    
     set -euo pipefail
 
     java -Xmx~{jobMemory - overhead}G -jar ~{gatkJar} --analysis_type RealignerTargetCreator \
