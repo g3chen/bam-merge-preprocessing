@@ -312,6 +312,7 @@ task preprocessBam {
       "timeout": 6,
       "modules": "samtools/1.9 gatk/4.1.6.0"
     }
+    String docker
   }
 
   # select_first doesn't like struct?.field? and winstanley doesn't like empty object "{}"
@@ -323,7 +324,6 @@ task preprocessBam {
   Int cores = select_first([optionalRuntimeAttributes.cores, defaultRuntimeAttributes.cores])
   Int timeout = select_first([optionalRuntimeAttributes.timeout, defaultRuntimeAttributes.timeout])
   String modules = select_first([optionalRuntimeAttributes.modules, defaultRuntimeAttributes.modules])
-  String docker
 
   String workingDir = if temporaryWorkingDir == "" then "" else "~{temporaryWorkingDir}/"
 
