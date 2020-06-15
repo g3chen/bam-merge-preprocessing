@@ -51,7 +51,7 @@
   build_type: copy
   build_args:
     from: /modulator/GenomeAnalysisTK.jar
-    to: bin/gatk
+    to: GenomeAnalysisTK.jar
   depends:
     - name: java
       version: 8
