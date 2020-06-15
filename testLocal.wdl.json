@@ -8,12 +8,15 @@
   "bamMergePreprocessing.pac": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.pac",
   "bamMergePreprocessing.sa": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.sa",
   "bamMergePreprocessing.dict": "/home/ubuntu/Downloads/sample_data/hg19_random.dict",
+  "bamMergePreprocessing.realignerTargetCreator.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
     "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
+  "bamMergePreprocessing.indelRealign.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
   "bamMergePreprocessing.indelRealign.knownAlleles": [
     "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
+  "bamMergePreprocessing.baseQualityScoreRecalibration.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
   "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
     "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],

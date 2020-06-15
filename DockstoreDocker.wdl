@@ -624,6 +624,7 @@ task realignerTargetCreator {
     File? pac
     File? sa
     File? dict
+    File? vcfIndex
 
     Array[File] knownIndels
     Array[String] intervals
@@ -700,6 +701,7 @@ task indelRealign {
     File? pac
     File? sa
     File? dict
+    File? vcfIndex
 
     Array[File] knownAlleles
     File targetIntervals
@@ -791,6 +793,7 @@ task baseQualityScoreRecalibration {
     File? pac
     File? sa
     File? dict
+    File? vcfIndex
 
     Array[String] intervals = []
     Array[File] knownSites
