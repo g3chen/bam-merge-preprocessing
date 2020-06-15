@@ -11,6 +11,15 @@ workflow bamMergePreprocessing {
     Boolean doIndelRealignment = true
     Boolean doBqsr = true
     File reference
+
+    # Pass in index files for Cromwell so they're in the same directory as the bwaRef file
+    File? fai
+    File? amb
+    File? ann
+    File? bwt
+    File? pac
+    File? sa
+
     String docker = "g3chen/bam-merge-preprocessing:4"
 
     # preprocessingBam runtime attributes overrides
