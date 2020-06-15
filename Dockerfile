@@ -44,4 +44,7 @@ ENV PATH="/modules/gsi/modulator/sw/Ubuntu18.04/gatk-4.1.6.0/bin:/modules/gsi/mo
 ENV LD_LIBRARY_PATH="/modules/gsi/modulator/sw/Ubuntu18.04/gatk-4.1.6.0/lib:/modules/gsi/modulator/sw/Ubuntu18.04/python-3.7/lib:/modules/gsi/modulator/sw/Ubuntu18.04/rstats-3.6/lib:/modules/gsi/modulator/sw/Ubuntu18.04/java-8/lib:/modules/gsi/modulator/sw/Ubuntu18.04/htslib-1.9/lib"
 ENV R_LIBS_SITE="/modules/gsi/modulator/sw/Ubuntu18.04/gatk-4.1.6.0/lib/R/library:/modules/gsi/modulator/sw/Ubuntu18.04/rstats-3.6/lib/R/library"
 
+# realignerTargetCreator requires this file in this location
+COPY GenomeAnalysisTK.jar $GATK_ROOT/GenomeAnalysisTK.jar
+
 CMD /bin/bash
