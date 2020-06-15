@@ -606,7 +606,7 @@ task realignerTargetCreator {
   }
 
   runtime {
-  	docker:  "~{docker}"
+    docker:  "~{docker}"
     memory:  "~{jobMemory} GB"
     cpu:     "~{cores}"
     timeout: "~{timeout}"

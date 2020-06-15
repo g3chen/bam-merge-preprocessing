@@ -1,6 +1,6 @@
 workflow test_location {
 	call findTools
-	call findToolsWithoutUnload
+#	call findToolsWithoutUnload
 }
 
 task findTools {
@@ -12,7 +12,9 @@ task findTools {
 #		whereis gatk
 #		module unload gatk
 		module load gatk/3.6-0
-		whereis gatk
+		echo $GATK_ROOT
+		ls -l /modules/gsi/modulator/sw/Ubuntu18.04/gatk-3.6-0
+		ls -l $GATK_ROOT
 #		module unload gatk
 #		whereis gatk
 	>>>
