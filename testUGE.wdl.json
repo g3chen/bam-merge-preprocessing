@@ -1,5 +1,5 @@
 {
-  "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY,chrM",
+  "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3",
   "bamMergePreprocessing.reference": "/.mounts/labs/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
     "/.mounts/labs/gsi/temp_reference_data/hg19/dbsnp_138/dbsnp_138.hg19.leftAligned.vcf.gz"
