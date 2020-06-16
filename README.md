@@ -14,6 +14,17 @@ WDL workflow to filter, merge, mark duplicates, indel realign and base quality s
 
 ## Usage
 
+### Dockstore
+Make a runtime JSON template and fill in desired inputs, outputs, and other parameters
+```
+dockstore workflow convert entry2json --entry github.com/g3chen/bam-merge-preprocessing/BamMergePreprocessing:master > Dockstore.json   
+vim Dockstore.json
+```
+Run locally with the Dockstore CLI
+```
+dockstore workflow launch --entry github.com/g3chen/bam-merge-preprocessing/BamMergePreprocessing:master --json Dockstore.json
+```
+
 ### Cromwell
 ```
 java -jar cromwell.jar run bamMergePreprocessing.wdl --inputs inputs.json
