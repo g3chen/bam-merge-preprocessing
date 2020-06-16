@@ -719,6 +719,9 @@ task indelRealign {
   }
 
   command <<<
+    source ~/.bashrc
+    module load gatk/3.6-0
+    
     set -euo pipefail
 
     # generate gatk nWayOut file
