@@ -565,7 +565,7 @@ task realignerTargetCreator {
     # use gatk3 for now: https://github.com/broadinstitute/gatk/issues/3104
     String modules = "gatk/3.6-0"
     #String gatkJar = "$GATK_ROOT/GenomeAnalysisTK.jar"
-    String gatkJar = "GenomeAnalysisTK.jar"
+    String gatkJar = "/u/g3chen/bam-merge-preprocessing/GenomeAnalysisTK.jar"
   }
 
   command <<<
@@ -627,7 +627,7 @@ task indelRealign {
     # use gatk3 for now: https://github.com/broadinstitute/gatk/issues/3104
     String modules = "python/3.7 gatk/3.6-0"
     #String gatkJar = "$GATK_ROOT/GenomeAnalysisTK.jar"
-    String gatkJar = "GenomeAnalysisTK.jar"
+    String gatkJar = "/u/g3chen/bam-merge-preprocessing/GenomeAnalysisTK.jar"
   }
 
   command <<<
