@@ -40,6 +40,7 @@ workflow bamMergePreprocessing {
     doBqsr: "Enable/disable GATK4 BQSR."
     reference: "Path to reference file."
     preprocessingBamRuntimeAttributes: "Interval specific runtime attributes to use as overrides for the defaults."
+	docker: "Docker container to run the workflow in"
   }
 
   meta {
@@ -299,6 +300,7 @@ task splitStringToArray {
     str: "Interval string to split (e.g. chr1,chr2,chr3+chr4)."
     lineSeparator: "Interval group separator - these are the intervals to split by."
     recordSeparator: "Interval interval group separator - this can be used to combine multiple intervals into one group."
+	docker: "Docker container to run the workflow in"
     jobMemory: "Memory allocated to job (in GB)."
     cores: "The number of cores to allocate to the job."
     timeout: "Maximum amount of time (in hours) the task can run for."
@@ -554,6 +556,7 @@ task preprocessBam {
     splitNCigarReadsAdditionalParams: "Additional parameters to pass to GATK SplitNCigarReads."
     runtimeAttributes: "Override default runtime attributes using this parameter (see parameter defaultRuntimeAttributes)."
     defaultRuntimeAttributes: "Default runtime attributes (memory in GB, overhead in GB, cores in cpu count, timeout in hours, modules are environment modules to load before the task executes)."
+	docker: "Docker container to run the workflow in"
   }
 }
 
@@ -603,6 +606,7 @@ task mergeBams {
     bams: "Array of bam files to merge together."
     outputFileName: "Output files will be prefixed with this."
     additionalParams: "Additional parameters to pass to GATK MergeSamFiles."
+	docker: "Docker container to run the workflow in"
     jobMemory: "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -678,6 +682,7 @@ task realignerTargetCreator {
     intervals: "One or more genomic intervals over which to operate."
     downsamplingType: "Type of read downsampling to employ at a given locus (NONE|ALL_READS|BY_SAMPLE)."
     additionalParams: "Additional parameters to pass to GATK RealignerTargetCreator."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -775,6 +780,7 @@ task indelRealign {
     knownAlleles: "Array of input VCF files with known indels."
     targetIntervals: "Intervals file output from RealignerTargetCreator."
     additionalParams: "Additional parameters to pass to GATK IndelRealigner."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -846,6 +852,7 @@ task baseQualityScoreRecalibration {
     knownSites: "Array of VCF with known polymorphic sites used to exclude regions around known polymorphisms from analysis."
     additionalParams: "Additional parameters to pass to GATK BaseRecalibrator."
     outputFileName: "Recalibration table file name."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -893,6 +900,7 @@ task gatherBQSRReports {
     recalibrationTables: "Array of recalibration tables to merge."
     additionalParams: "Additional parameters to pass to GATK GatherBQSRReports."
     outputFileName: "Recalibration table file name."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -940,6 +948,7 @@ task analyzeCovariates {
     recalibrationTable: "Recalibration table to produce report for."
     additionalParams: "Additional parameters to pass to GATK AnalyzeCovariates"
     outputFileName: "Recalibration report file name."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -993,6 +1002,7 @@ task applyBaseQualityScoreRecalibration {
     outputFileName: "Output files will be prefixed with this."
     suffix: "Suffix to use for recalibrated bams."
     additionalParams: "Additional parameters to pass to GATK ApplyBQSR."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     overhead: "Java overhead memory (in GB). jobMemory - overhead == java Xmx/heap memory."
     cores: "The number of cores to allocate to the job."
@@ -1073,6 +1083,7 @@ task collectFilesBySample {
     inputGroups: "Array of objects describing output file groups. The output file group name is used to partition input bams by name."
     bams: "Array of bams to partition by inputGroup output file name."
     bamIndexes: "Array of index files for input bams."
+	docker: "Docker container to run the workflow in"
     jobMemory:  "Memory allocated to job (in GB)."
     cores: "The number of cores to allocate to the job."
     timeout: "Maximum amount of time (in hours) the task can run for."
