@@ -4,19 +4,15 @@ workflow test_location {
 
 task find_tools {
     command <<<
-        ls -l /data/test_star_fusion/reads_1.fq.gz
+        ls -l /data/HG19_ROOT/hg19_random.fa
         echo "@@@@@@@@@@@@@"
-        ls -l /data/test_star_fusion/reads_2.fq.gz
-        echo "@@@@@@@@@@@@@"
-        ls -l /data/test_star_fusion/test.Chimeric.out.junction
-        echo "@@@@@@@@@@@@@"
-        ls -l /data/STAR_FUSION_GENOME_ROOT/ctat_genome_lib_build_dir
+        ls -l /data/HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz
         echo "@@@@@@@@@@@@@"
     >>>
     output{
         String message = read_string(stdout())
     }
     runtime {
-        docker: "g3chen/starfusion:2.0"
+        docker: "g3chen/bam-merge-preprocessing@sha256:e177ba2ab30bf93a936e52839ea4747e8d3ad6dffcf5f7435e4e22ae240d8956"
     }
 }
