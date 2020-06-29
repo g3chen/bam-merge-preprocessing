@@ -1,6 +1,6 @@
 {
   "default_runtime_attributes": {
-    "docker": "g3chen/bam-merge-preprocessing@sha256:e177ba2ab30bf93a936e52839ea4747e8d3ad6dffcf5f7435e4e22ae240d8956",
+    "docker": "g3chen/bam-merge-preprocessing@sha256:e876e69fe23bf721c6ec61b88b1c808a3408520fb4d8cc539efcd6d61d4f0994",
     "docker_volume": "/home/ubuntu/Downloads/sample_data:/data"
   }
 }

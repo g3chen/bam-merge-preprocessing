@@ -1,5 +1,5 @@
 {
-  "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2",
+  "bamMergePreprocessing.intervalsToParallelizeByString": "chr1",
   "bamMergePreprocessing.reference": "/data/HG19_ROOT/hg19_random.fa",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
     "/data/HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
