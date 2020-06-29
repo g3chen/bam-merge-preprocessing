@@ -1,44 +1,34 @@
 {
   "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2",
-  "bamMergePreprocessing.reference": "/home/ubuntu/Downloads/sample_data/hg19_random.fa",
-  "bamMergePreprocessing.fai": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.fai",
-  "bamMergePreprocessing.amb": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.amb",
-  "bamMergePreprocessing.ann": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.ann",
-  "bamMergePreprocessing.bwt": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.bwt",
-  "bamMergePreprocessing.pac": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.pac",
-  "bamMergePreprocessing.sa": "/home/ubuntu/Downloads/sample_data/hg19_random.fa.sa",
-  "bamMergePreprocessing.dict": "/home/ubuntu/Downloads/sample_data/hg19_random.dict",
-  "bamMergePreprocessing.realignerTargetCreator.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
+  "bamMergePreprocessing.reference": "/data/HG19_ROOT/hg19_random.fa",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
-    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data/HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
-  "bamMergePreprocessing.indelRealign.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
   "bamMergePreprocessing.indelRealign.knownAlleles": [
-    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data/HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
-  "bamMergePreprocessing.baseQualityScoreRecalibration.vcfIndex": "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz.tbi",
   "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
-    "/home/ubuntu/Downloads/sample_data/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data/HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.inputGroups": [
     {
       "outputIdentifier": "PCSI0022",
       "bamAndBamIndexInputs": [
         {
-          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022C.val.bam",
-          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022C.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022C.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022C.val.bam.bai"
         },
         {
-          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022P.val.bam",
-          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022P.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022P.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022P.val.bam.bai"
         },
         {
-          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bam",
-          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022R.val.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022R.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022R.val.bai"
         },
         {
-          "bam": "/home/ubuntu/Downloads/sample_data/PCSI0022X.val.bam",
-          "bamIndex": "/home/ubuntu/Downloads/sample_data/PCSI0022X.val.bam.bai"
+          "bam": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022X.val.bam",
+          "bamIndex": "/home/ubuntu/Downloads/sample_data/test_bam_merge_preprocessing/PCSI0022X.val.bam.bai"
         }
       ]
     }
