@@ -2,13 +2,13 @@
   "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3",
   "bamMergePreprocessing.reference": "/data_modules/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
   "bamMergePreprocessing.realignerTargetCreator.knownIndels": [
-    "$HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.indelRealign.knownAlleles": [
-    "$HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.baseQualityScoreRecalibration.knownSites": [
-    "$HG19_DBSNP_LEFTALIGNED_ROOT/dbsnp_138.hg19.leftAligned.vcf.gz"
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
   ],
   "bamMergePreprocessing.inputGroups": [
     {
