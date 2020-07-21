@@ -1,0 +1,9 @@
+{
+	"realignerTargetCreator": ["knownIndels", "timeout"],
+	"indelRealign": ["knownAlleles", "timeout"],
+	"baseQualityScoreRecalibration": ["knownSites", "timeout"],
+	"analyzeCovariates": ["timeout"],
+	"applyBaseQualityScoreRecalibration": ["timeout"],
+	"gatherBQSRReports": ["timeout"],
+	"mergeSplitByIntervalBams": ["timeout"]
+}

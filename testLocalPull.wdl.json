@@ -1,0 +1,60 @@
+{
+  "bamMergePreprocessing.intervalsToParallelizeByString": "chr1,chr2,chr3",
+  "bamMergePreprocessing.reference": "/data_modules/gsi/modulator/sw/data/hg19-p13/hg19_random.fa",
+  "bamMergePreprocessing.realignerTargetCreator_knownIndels": [
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
+  ],
+  "bamMergePreprocessing.indelRealign_knownAlleles": [
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
+  ],
+  "bamMergePreprocessing.baseQualityScoreRecalibration_knownSites": [
+    "/data_modules/gsi/modulator/sw/data/hg19-dbsnp-leftaligned-138/dbsnp_138.hg19.leftAligned.vcf.gz"
+  ],
+  "bamMergePreprocessing.inputGroups": [
+    {
+      "outputIdentifier": "PCSI0022",
+      "bamAndBamIndexInputs": [
+        {
+          "bam": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022C.val.bam",
+          "bamIndex": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022C.val.bam.bai"
+        },
+        {
+          "bam": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022P.val.bam",
+          "bamIndex": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022P.val.bam.bai"
+        },
+        {
+          "bam": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022R.val.bam",
+          "bamIndex": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022R.val.bai"
+        },
+        {
+          "bam": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022X.val.bam",
+          "bamIndex": "/home/ubuntu/data/sample_data/bammergepreprocessing/PCSI0022X.val.bam.bai"
+        }
+      ]
+    }
+  ],
+  "bamMergePreprocessing.analyzeCovariates_timeout": 1,
+  "bamMergePreprocessing.applyBaseQualityScoreRecalibration_timeout": 1,
+  "bamMergePreprocessing.baseQualityScoreRecalibration_timeout": 1,
+  "bamMergePreprocessing.gatherBQSRReports_timeout": 1,
+  "bamMergePreprocessing.indelRealign_timeout": 1,
+  "bamMergePreprocessing.mergeSplitByIntervalBams_timeout": 1,
+  "bamMergePreprocessing.preprocessingBamRuntimeAttributes": [
+    {
+      "id": "chr1",
+      "memory": 21,
+      "timeout": 1
+    },
+    {
+      "id": "PCSI0022.chr2",
+      "memory": 21,
+      "timeout": 1
+    },
+    {
+      "id": "*",
+      "memory": 18,
+      "timeout": 1
+    }
+  ],
+  "bamMergePreprocessing.realignerTargetCreator_timeout": 1
+}
