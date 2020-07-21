@@ -5,5 +5,5 @@
 	"analyzeCovariates": ["timeout"],
 	"applyBaseQualityScoreRecalibration": ["timeout"],
 	"gatherBQSRReports": ["timeout"],
-	"mergeSplitByIntervalBams": ["timeout"]
+	"mergeBams": ["timeout"]
 }
